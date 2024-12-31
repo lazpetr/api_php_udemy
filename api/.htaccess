@@ -1,0 +1,15 @@
+# Enable the Apache rewrite engine, which allows URL rewriting based on defined rules.
+RewriteEngine On
+
+# Check if the requested file does not exist as a regular file.
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Check if the requested file does not exist as a directory.
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Check if the requested file is not a symbolic link.
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# If all the above conditions are met, redirect all requests to "index.php".
+# The [L] flag means this is the last rule to process if matched.
+RewriteRule . index.php [L]
